@@ -150,8 +150,6 @@
 								$player = $positions[$k][0][$lineup[$positions[$k][2][$j]]];
 								array_splice($positions[$k][0], $lineup[$positions[$k][2][$j]], 1);
 								$lineup = $lineuporiginal;
-							//print_r($lineup);
-							//echo "<br><br>";
 								computelineup($positions, $lineup);
 								$points = getpoints($positions,$lineup);
 								$lineup1 = $lineup;
@@ -217,25 +215,8 @@
     	return ($a['1'] > $b['1']) ? -1 : 1;
 	}
 	function checkname($positions,$name,$lineup,&$increasearray){
-		/*for($x=0; $x<count($increasearray);$x++){
-			if(strcmp($name,$increasearray[$x][4])===0){
-				if($increasearray[$x][1]>$increase){
-					return false;
-				}else{
-					array_splice($increasearray,$x,1);
-					return true;
-				}
-			}
-		}
-		for($i=0; $i<count($position[2]); $i++){
-			if(strcmp($name,$position[0][$lineup[$position[2][$i]]]['name'])===0){
-				return false;
-			}
-		}
-		return true;*/
 		for($k=0; $k<count($positions);$k++){
 			for($j=0; $j<count($positions[$k][2]); $j++){
-				//var_dump($positions[$k][0][$lineup[$positions[$k][2][$j]]]['name']);
 				if(strcmp($name,$positions[$k][0][$lineup[$positions[$k][2][$j]]]['name'])===0){
 					return false;
 				}
@@ -244,9 +225,6 @@
 		return true;
 	}
 	function helper($positions,&$increasearray,&$lineup){
-		//var_dump($positions);
-		//var_dump($increasearray);
-		//var_dump($lineup);
         global $salarylimit;
 		$salary = getsalary($positions,$lineup);
 		for($i=0; $i<count($increasearray); $i++){
